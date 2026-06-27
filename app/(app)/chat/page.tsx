@@ -1,7 +1,6 @@
 import Topbar from "@/components/Topbar";
 import ChatWindow from "@/components/ChatWindow";
-import { prisma } from "@/lib/prisma";
-import { getDefaultUser } from "@/lib/user";
+import { getChatWithMessages, getDefaultUser } from "@/lib/data";
 
 export const dynamic = "force-dynamic";
 
@@ -17,17 +16,14 @@ export default async function ChatPage({ searchParams }: ChatPageProps) {
   let chatId: string | null = null;
 
   if (id) {
-    const chat = await prisma.chat.findFirst({
-      where: { id, userId: user.id },
-      include: { messages: { orderBy: { createdAt: "asc" } } },
-    });
+    const chat = await getChatWithMessages(user.id, id);
 
     if (chat) {
       chatId = chat.id;
-      initialMessages = chat.messages.map((m) => ({
-        id: m.id,
-        role: m.role as "user" | "assistant",
-        content: m.content,
+      initialMessages = chat.messages.map((message) => ({
+        id: message.id,
+        role: message.role,
+        content: message.content,
       }));
     }
   }

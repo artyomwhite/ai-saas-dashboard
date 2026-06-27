@@ -1,8 +1,7 @@
 import Topbar from "@/components/Topbar";
 import Card from "@/components/Card";
 import Button from "@/components/Button";
-import { prisma } from "@/lib/prisma";
-import { getDefaultUser } from "@/lib/user";
+import { getDashboardData, getDefaultUser } from "@/lib/data";
 
 export const dynamic = "force-dynamic";
 
@@ -15,21 +14,7 @@ const statIcons = [
 
 export default async function DashboardPage() {
   const user = await getDefaultUser();
-
-  const [chatCount, messageCount, recentChats] = await Promise.all([
-    prisma.chat.count({ where: { userId: user.id } }),
-    prisma.message.count({
-      where: { chat: { userId: user.id } },
-    }),
-    prisma.chat.findMany({
-      where: { userId: user.id },
-      orderBy: { createdAt: "desc" },
-      take: 5,
-      include: {
-        messages: { orderBy: { createdAt: "desc" }, take: 1 },
-      },
-    }),
-  ]);
+  const { chatCount, messageCount, recentChats } = await getDashboardData(user.id);
 
   const stats = [
     { label: "Total Chats", value: chatCount.toString(), change: "+12%", positive: true },

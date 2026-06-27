@@ -1,22 +1,13 @@
 import Link from "next/link";
 import Topbar from "@/components/Topbar";
 import Button from "@/components/Button";
-import { prisma } from "@/lib/prisma";
-import { getDefaultUser } from "@/lib/user";
+import { getChatHistory, getDefaultUser } from "@/lib/data";
 
 export const dynamic = "force-dynamic";
 
 export default async function HistoryPage() {
   const user = await getDefaultUser();
-
-  const chats = await prisma.chat.findMany({
-    where: { userId: user.id },
-    orderBy: { createdAt: "desc" },
-    include: {
-      messages: { orderBy: { createdAt: "asc" }, take: 1 },
-      _count: { select: { messages: true } },
-    },
-  });
+  const chats = await getChatHistory(user.id);
 
   return (
     <>

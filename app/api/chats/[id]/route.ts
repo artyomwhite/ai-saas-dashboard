@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
-import { getDefaultUser } from "@/lib/user";
+import { getChatWithMessages, getDefaultUser } from "@/lib/data";
 
 type RouteParams = { params: Promise<{ id: string }> };
 
@@ -8,13 +7,7 @@ export async function GET(_request: NextRequest, { params }: RouteParams) {
   try {
     const { id } = await params;
     const user = await getDefaultUser();
-
-    const chat = await prisma.chat.findFirst({
-      where: { id, userId: user.id },
-      include: {
-        messages: { orderBy: { createdAt: "asc" } },
-      },
-    });
+    const chat = await getChatWithMessages(user.id, id);
 
     if (!chat) {
       return NextResponse.json({ error: "Chat not found" }, { status: 404 });
@@ -24,11 +17,11 @@ export async function GET(_request: NextRequest, { params }: RouteParams) {
       chat: {
         id: chat.id,
         createdAt: chat.createdAt.toISOString(),
-        messages: chat.messages.map((m) => ({
-          id: m.id,
-          role: m.role as "user" | "assistant",
-          content: m.content,
-          createdAt: m.createdAt.toISOString(),
+        messages: chat.messages.map((message) => ({
+          id: message.id,
+          role: message.role,
+          content: message.content,
+          createdAt: message.createdAt.toISOString(),
         })),
       },
     });
