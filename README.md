@@ -1,6 +1,8 @@
 # Nexus AI
 
-A portfolio-grade AI SaaS dashboard — a production-style MVP built to demonstrate full-stack product engineering for GitHub portfolios, Upwork clients, and live demos.
+Nexus AI is a modern AI-powered SaaS dashboard designed as a production-ready MVP that simulates a real startup product experience.
+
+This project demonstrates full-stack SaaS engineering including authentication flows, AI integration, and modern dashboard UI design.
 
 ![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)
