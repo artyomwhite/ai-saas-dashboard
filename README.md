@@ -57,7 +57,7 @@ Nexus AI is a modern SaaS dashboard with an AI chat assistant, analytics overvie
 
 ```bash
 # Clone the repository
-git clone https://github.com/artyomwhite/ai-saas-dashboard.git
+git clone https://github.com/artyomwhite/-ai-saas-dashboard.git
 cd ai-saas-dashboard
 
 # Install dependencies
@@ -139,4 +139,4 @@ MIT — free to use for portfolio and learning purposes.
 
 ---
 
-Built as a portfolio SaaS MVP · [GitHub](https://github.com/artyomwhite/ai-saas-dashboard)
+Built as a portfolio SaaS MVP · [GitHub](https://github.com/artyomwhite/-ai-saas-dashboard)

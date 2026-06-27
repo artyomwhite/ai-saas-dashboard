@@ -2,7 +2,7 @@
 
 Step-by-step instructions to push **Nexus AI** to your GitHub repository.
 
-**Repository URL:** https://github.com/artyomwhite/ai-saas-dashboard
+**Repository URL:** https://github.com/artyomwhite/-ai-saas-dashboard
 
 ---
 
@@ -50,13 +50,13 @@ git branch -M main
 Add your GitHub repository as the remote origin:
 
 ```bash
-git remote add origin https://github.com/artyomwhite/ai-saas-dashboard.git
+git remote add origin https://github.com/artyomwhite/-ai-saas-dashboard.git
 ```
 
 If `origin` already exists and points to the wrong URL, update it:
 
 ```bash
-git remote set-url origin https://github.com/artyomwhite/ai-saas-dashboard.git
+git remote set-url origin https://github.com/artyomwhite/-ai-saas-dashboard.git
 ```
 
 Verify the remote:
@@ -68,8 +68,8 @@ git remote -v
 Expected output:
 
 ```
-origin  https://github.com/artyomwhite/ai-saas-dashboard.git (fetch)
-origin  https://github.com/artyomwhite/ai-saas-dashboard.git (push)
+origin  https://github.com/artyomwhite/-ai-saas-dashboard.git (fetch)
+origin  https://github.com/artyomwhite/-ai-saas-dashboard.git (push)
 ```
 
 ---
@@ -106,7 +106,7 @@ GitHub may ask you to sign in. Use one of these methods:
 
 After a successful push, visit:
 
-**https://github.com/artyomwhite/ai-saas-dashboard**
+**https://github.com/artyomwhite/-ai-saas-dashboard**
 
 Your code should be live on GitHub.
 
@@ -144,7 +144,7 @@ For portfolio demos, you can deploy without a production DB — the app will bui
 ### `remote origin already exists`
 
 ```bash
-git remote set-url origin https://github.com/artyomwhite/ai-saas-dashboard.git
+git remote set-url origin https://github.com/artyomwhite/-ai-saas-dashboard.git
 ```
 
 ### `failed to push — rejected`
@@ -166,7 +166,7 @@ Create a Personal Access Token at [github.com/settings/tokens](https://github.co
 
 ```bash
 cd C:\Users\User\Desktop\ai-saas-dashboard
-git remote add origin https://github.com/artyomwhite/ai-saas-dashboard.git
+git remote add origin https://github.com/artyomwhite/-ai-saas-dashboard.git
 git branch -M main
 git add .
 git commit -m "feat: initial SaaS dashboard MVP"
