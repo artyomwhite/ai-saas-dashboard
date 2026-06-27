@@ -4,13 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && prisma db push && next build",
+    "build": "node scripts/ensure-env.mjs npx prisma generate && node scripts/ensure-env.mjs npx prisma db push && next build",
     "start": "next start",
     "lint": "eslint",
-    "postinstall": "prisma generate",
-    "db:push": "prisma db push",
+    "postinstall": "node scripts/ensure-env.mjs npx prisma generate",
+    "db:push": "node scripts/ensure-env.mjs npx prisma db push",
     "db:seed": "npx tsx prisma/seed.ts",
-    "db:setup": "prisma db push && npx tsx prisma/seed.ts"
+    "db:setup": "node scripts/ensure-env.mjs npx prisma db push && npx tsx prisma/seed.ts"
   },
   "prisma": {
     "seed": "npx tsx prisma/seed.ts"
